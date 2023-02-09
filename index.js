@@ -1,5 +1,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const path = require('path');
 const homeRoutes = require('./routes/home');
 const cartRoutes = require('./routes/cart');
 const addRoutes = require('./routes/add');
@@ -19,7 +20,7 @@ app.set('view engine', 'hbs');
 // set views folder
 app.set('views', 'views');
 // set css
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: true}));
 
 // use routes
