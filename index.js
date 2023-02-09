@@ -19,6 +19,7 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 // set css
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
 
 // use routes
 app.use('/', homeRoutes);
