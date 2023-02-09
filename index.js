@@ -21,9 +21,9 @@ app.set('views', 'views');
 app.use(express.static('public'));
 
 // use routes
-app.use(homeRoutes);
-app.use(addRoutes);
-app.use(coursesRoutes);
+app.use('/', homeRoutes);
+app.use('/add', addRoutes);
+app.use('/courses', coursesRoutes);
 
 const PORT = process.env.PORT || 3000;
 
