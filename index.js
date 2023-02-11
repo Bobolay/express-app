@@ -18,7 +18,7 @@ const User = require('./models/user');
 const varMiddleware = require('./middleware/variables');
 const userMiddleware = require('./middleware/user');
 
-const MONGODB_URI = `mongodb+srv://Bohdan:LL5pzUJvurzcB4E7@cluster0.b3nsifa.mongodb.net/shop`;
+const MONGODB_URI = `mongodb+srv://Bohdan:NEdEFWz0ofHGMgpg@cluster0.b3nsifa.mongodb.net/shop`;
 const app = express();
 
 const hbs = exphbs.create({
