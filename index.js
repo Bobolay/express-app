@@ -16,6 +16,7 @@ const authRoutes = require('./routes/auth');
 
 const User = require('./models/user');
 const varMiddleware = require('./middleware/variables');
+const userMiddleware = require('./middleware/user');
 
 const MONGODB_URI = `mongodb+srv://Bohdan:LL5pzUJvurzcB4E7@cluster0.b3nsifa.mongodb.net/shop`;
 const app = express();
@@ -42,6 +43,7 @@ app.use(session({
     store
 }));
 app.use(varMiddleware);
+app.use(userMiddleware);
 
 // ROUTES
 app.use('/', homeRoutes);
