@@ -56,6 +56,6 @@ if ($cart) {
                 })
         }
     });
-} else {
-
 }
+
+M.Tabs.init(document.querySelectorAll('.tabs'));
