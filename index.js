@@ -8,6 +8,7 @@ const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongodb-session')(session);
+const keys = require('./keys');
 
 const homeRoutes = require('./routes/home');
 const cartRoutes = require('./routes/cart');
@@ -19,7 +20,6 @@ const authRoutes = require('./routes/auth');
 const varMiddleware = require('./middleware/variables');
 const userMiddleware = require('./middleware/user');
 
-const MONGODB_URI = `mongodb+srv://Bohdan:NEdEFWz0ofHGMgpg@cluster0.b3nsifa.mongodb.net/shop`;
 const app = express();
 
 const hbs = exphbs.create({
@@ -29,7 +29,7 @@ const hbs = exphbs.create({
 })
 const store = new MongoStore({
     collection: 'sessions',
-    uri: MONGODB_URI
+    uri: keys.MONGODB_URI
 });
 
 app.engine('hbs', hbs.engine);
@@ -38,7 +38,7 @@ app.set('views', 'views');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: true}));
 app.use(session({
-    secret: 'some secret value',
+    secret: keys.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store
@@ -60,7 +60,7 @@ const PORT = process.env.PORT || 3000;
 
 async function start() {
     try {
-        await mongoose.connect(MONGODB_URI, {
+        await mongoose.connect(keys.MONGODB_URI, {
             useNewUrlParser: true
         });
 
