@@ -19,6 +19,7 @@ const authRoutes = require('./routes/auth');
 
 const varMiddleware = require('./middleware/variables');
 const userMiddleware = require('./middleware/user');
+const error404Handler = require('./middleware/error');
 
 const app = express();
 
@@ -56,6 +57,7 @@ app.use('/add', addRoutes);
 app.use('/courses', coursesRoutes);
 app.use('/orders', ordersRoutes);
 app.use('/auth', authRoutes);
+app.use(error404Handler);
 
 const PORT = process.env.PORT || 3000;
 
